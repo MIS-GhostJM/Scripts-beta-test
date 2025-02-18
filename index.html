@@ -26,7 +26,7 @@
                 <button id="clearForm" class="btn btn-secondary">Clear All</button>
             </div>
         </aside>
-        
+
         <!-- Main Content -->
         <main class="main-content">
             <header class="app-header">
@@ -69,6 +69,10 @@
                 <button id="freeflow-nav" class="nav-btn">Freeflow Notes</button>
                 <button id="errands-nav" class="nav-btn">Errands Note</button>
                 <button id="csat-scripts-nav" class="nav-btn">C-Sat Scripts</button>
+                <button id="etg-chat-scripts-nav" class="nav-btn">ETG Chat Script</button>
+                <button id="etg-voice-scripts-nav" class="nav-btn">ETG Voice Script</button>
+                <button id="bcom-chat-scripts-nav" class="nav-btn">B.com Chat Script</button>
+                <button id="bcom-voice-scripts-nav" class="nav-btn">B.com Voice Script</button>
                 <button id="new_update-nav" class="nav-btn">New Update !!!</button>
             </nav>
 
@@ -1563,6 +1567,228 @@
                     </div>
                 </section>
                 <!--General Scripts END-->
+                
+                <!-- ETG Chat Scripts Start-->
+                <section id="etg-chat-scripts-section" class="interaction-section">
+                    <div class="section-grid">
+                        <div class="section-headers">
+                            <h3>Chat Opening (asking to wait) ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Hello,  <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is  <span class="agent_name" data-default-text="[Agent name]">[Agent name]</span>. Please give me a moment to review your request.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Chat Opening (asking to state the request) ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Hello,  <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is  <span class="agent_name" data-default-text="[Agent name]">[Agent name]</span>. How may I help you with your booking?.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Chat Opening due to long wait time (more than 5 minutes) Request stated ETG/B.com UK</h3>
+                            <p>The customer has gone through the workflow and is waiting to be connected to the agent</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Hi <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, 
+                                this is <span class="agent_name" data-default-text="[Agent name]">[Agent name]</span>. 
+                                Thank you for your patience as we handle a high volume of requests. I'll review your case details and be with you shortly!
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Chat Opening after connecting with the chat BOT (but no resolution) ETG UK</h3>
+                            <p>The customer has gone through our chatbot however his query was not resolved and is now connected to the agent</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Hi <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, 
+                                this is <span class="agent_name" data-default-text="[Agent name]">[Agent name]</span> from 
+                                <span class="manual-edit" data-default-text="[Brand]" onclick="enableTextEdit(this)">[Brand]</span> Support. 
+                                I noticed our chatbot couldn't fully assist you—my apologies for the inconvenience, 
+                                and thank you for your patience! 
+                                I'll review your case details and be with you shortly!
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Order not found (request to spell provider's URL) ETG UK</h3>
+                            <p>When the customer provides an order number which is related to other OTAs/provider's booking</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Thanks for providing the order number! It looks like this one isn't from our site. 
+                                Kindly provide the correct spelling of the email address linked to your confirmation email. 
+                                If that is unavailable, 
+                                please spell out the URL <span class="manual-edit" data-default-text="[website address]" onclick="enableTextEdit(this)">[website address]</span> where you purchased your ticket. 
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>When the customer provides a name/site's URL which is related to other OTAs/provider's booking</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Thanks for sharing your booking reference! 
+                                It seems the number provided doesn’t match a ticket purchased through our website and may have been purchased elsewhere. 
+                                If you have another reference number, please provide it now. 
+                                Otherwise, it's best to reach out directly to the provider. 
+                                Let me know if there's anything else I can assist you with!
+                            </div>
+                        </div>
+                        
+                        <div class="section-headers">
+                            <h3>When the customer provides a name/site's URL which is related to other OTAs/provider's booking</h3>
+                            <p>If the customer does not have other reference numbers</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                I'm sorry, but we can only work on active booking numbers from our site.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Question before closing ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Is there anything else I can assist you with today?
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Chat Closing When customer irate or unhappy ETG/B.com UK</h3>
+                            <p>The customer is already unhappy with our service we need to use this script instead of a standard closing script</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                We apologize for the inconvenience but we're unable to assist you at this moment. 
+                                Your satisfaction is important to us, and we're continuously striving to improve our service. 
+                                Please feel free to reach out in the future for any assistance. 
+                                This chat will now close.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Customer doesn't respond 1st Warning ETG/B.com UK</h3>
+                            <p>To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 min.</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Hi, I wanted to check in to see if you're still with us. 
+                                Please reply so I can continue assisting you. If I don't hear from you in the next 3 minutes, 
+                                the chat will close due to inactivity.<br><br>
+                                Don't worry - you can always reach out again whenever you’re ready. We’re here to help!
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Customer doesn't respond 1st Warning ETG/B.com UK</h3>
+                            <p>To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 min</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Hi, I wanted to check in to see if you're still with us. Please reply so I can continue assisting you. 
+                                If I don't hear from you in the next 3 minutes, the chat will close due to inactivity.
+                            </div>
+                            <div class="script-card">
+                                Don't worry - you can always reach out again whenever you’re ready. We’re here to help!
+                            </div>
+                        </div> 
+                        <div class="section-headers">
+                            <h3>Close chat after no response for 5 min ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                I still haven't received a response, and it seems that you are no longer connected. This chat will now be closed. 
+                                If you need further assistance, please start a new chat. Thank you
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Hold ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Please give me a moment to review your information. I will be back shortly.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Refresh Hold ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Thank you for waiting. I will need a few more minutes to work on your request.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Consequent refresh hold (This should be the last hold during your interaction) ETG/B.com</h3>
+                            <p>For this last hold, you should not mention specific minutes, however, you must get back to the chat within 5 minutes to avoid "dead air"</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                I am still working on your request and am almost there. 
+                                I just need a few more minutes to wrap this up. 
+                                I appreciate your patience while I make sure everything is handled properly.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>Proceed request ETG/B.com UK</h3>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                Thank you. Please give me a moment to process your request.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>[Chat] - Data breach inquiry ETG/B.com UK</h3>
+                            <p>If the customer mentions the recent data breach/suspicious activity detected/security incident email</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                I understand your concerns about the recent suspicious activity. Please allow me a moment to share the information we have and assist you further.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>[Chat] - Data breach inquiry - types of personal info were accessed ETG/B.com UK</h3>
+                            <p>What specific types of personal information were potentially accessed?</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                The potentially affected information includes various categories of personal data related to our customers. 
+                                I can confirm that no payment information was compromised.  
+                                It is important to note that there is no evidence or indication of any actual impact on any customer, nor that any data was taken. 
+                                We have informed the relevant authorities, 
+                                as it is our responsibility, 
+                                even though there is no indication that customer data has actually been exploited in any way as part of such suspicious activity.
+                            </div>
+                        </div>
+                        <div class="section-headers">
+                            <h3>[Chat] - Data breach inquiry - Inquiry about system vulnerabilities ETG/B.com UK</h3>
+                            <p>How did the attacker get access to your system/exploit the system vulnerabilities?</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                The attacker found a way to exploit certain system vulnerabilities to access data. 
+                                Specific technical details cannot be disclosed for security reasons. 
+                                Again, it is only a suspicious activity, and there is no certainty that data was actually taken.
+                            </div>
+                        </div>        
+                        <div class="section-headers">
+                            <h3>[Chat] - Data breach inquiry - Support for impacted individuals ETG/B.com UK</h3>
+                            <p>What advice or support is being offered to potentially impacted individuals?</p>
+                        </div>
+                        <div class="section-scripts">
+                            <div class="script-card">
+                                While we currently have no evidence or indication of any actual impact on you, 
+                                we recommend remaining vigilant against phishing attacks and other online fraud attempts. 
+                                Here are some key practices to stay safe:<br>
+                                1. Be cautious with unexpected calls or messages, and do not click on links from untrusted sources.<br>
+                                2. Remember that neither [Brand] nor any airline will ask for additional financial information through email. Contact us to verify any suspicious communication.<br>
+                                3. Be wary of payment requests that are unexpected. Genuine requests will come through a secure payment link or phone after security clearance.<br>
+                                4. Do not enter financial information on non-secure websites, and do not share passwords or security codes over the phone.<br>
+                                We advise customers to monitor any suspicious activity and report any concerns to our support team. Additional support measures will be communicated as needed. It is important to remember that there are no signs of misuse of any potentially compromised data, at this point.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ETG Chat Scripts END-->
+
                 <!--my scripts-->
                 <section id="my-scripts-section" class="interaction-section">
                     <div class="section-grid">
