@@ -1,29 +1,22 @@
-{
-  "modules": [
-    {
-      "id": "opening",
-      "title": "Chat Opening ETG/B.com UK",
-      "type": "chat",
-      "subTitle": "(Asking to wait)",
-      "cards": [
-        {
-          "content": "Hello <span class='manual-edit' data-default-text='[Cx Name]'>[Cx Name]</span>, my name is <span class='manual-edit' data-default-text='[Agent Name]'>[Agent Name]</span>. Please give me a moment to review your request."
-        },
-        {
-          "content": "Thank you for waiting, <span class='manual-edit' data-default-text='[Cx Name]'>[Cx Name]</span>. How can I further assist you today?"
-        }
-      ]
-    },
-    {
-      "id": "closing",
-      "title": "Chat Closing ETG/B.com UK",
-      "type": "voice",
-      "subTitle": "(Ending the conversation)",
-      "cards": [
-        {
-          "content": "Thank you for contacting us, <span class='manual-edit' data-default-text='[Cx Name]'>[Cx Name]</span>. Have a great day!"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": "opening",
+    "category": "chat",
+    "title": "Chat Opening ETG/B.com UK",
+    "subtitle": "(Asking to wait)",
+    "cards": [
+      "Hello <span class='manual-edit' data-default-text='[Cx Name]' onclick='enableTextEdit(this)'>[Cx Name]</span>, my name is <span class='manual-edit' data-default-text='[Agent Name]' onclick='enableTextEdit(this)'>[Agent Name]</span>. Please give me a moment to review your request.",
+      "Thank you for calling."
+    ]
+  },
+  {
+    "id": "closing",
+    "category": "voice",
+    "title": "Voice Closing ETG/B.com UK",
+    "subtitle": "(End of conversation)",
+    "cards": [
+      "Thank you, <span class='manual-edit' data-default-text='[Cx Name]' onclick='enableTextEdit(this)'>[Cx Name]</span>. Have a great day!",
+      "Goodbye!"
+    ]
+  }
+]
