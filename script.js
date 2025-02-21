@@ -1,470 +1,365 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Configuration constants
-    const CONFIG = {
-        TOOLTIP_DURATION: 2000,
-        ANIMATION_DURATION: 300,
-        SEARCH_DEBOUNCE_TIME: 300
-    };
-
-    // Utility query selectors
-    const $ = selector => document.querySelector(selector);
-    const $$ = selector => document.querySelectorAll(selector);
-
-    // Application State Management
-    class AppState {
-        constructor() {
-            this.formData = { 
-                agentName: '', 
-                customerName: '', 
-                intent: '' 
-            };
-        }
-
-        // Update form data and placeholders
-        updateFormData(key, value) {
-            this.formData[key] = value;
-            this.updatePlaceholders();
-        }
-
-        // Reset form data
-        resetFormData(preserveAgentName = true) {
-            if (preserveAgentName) {
-                this.formData.customerName = '';
-                this.formData.intent = '';
-            } else {
-                this.formData = { 
-                    agentName: '', 
-                    customerName: '', 
-                    intent: '' 
-                };
-            }
-            this.updatePlaceholders();
-        }
-
-        // Update placeholder texts across the application
-        updatePlaceholders() {
-            $$('.customer_name').forEach(el => {
-                el.textContent = this.formData.customerName || '[Cx name]';
-            });
-            $$('.agent_name').forEach(el => {
-                el.textContent = this.formData.agentName || '[Agent name]';
-            });
-            $$('.intent').forEach(el => {
-                el.textContent = this.formData.intent || '[intent]';
-            });
-        }
+// Cache DOM elements
+const DOM = {
+    channelSelect: document.getElementById('channel-selection'),
+    scriptNavContainer: document.querySelector('.script-nav-container'),
+    navButtons: document.querySelectorAll('.nav-btn'),
+    scriptModules: document.querySelectorAll('.script-module'),
+    navItems: document.querySelectorAll('.nav-item'),
+    subPages: document.querySelectorAll('.sub-page'),
+    searchInput: document.getElementById('search-input'),
+    searchButton: document.getElementById('search-action'),
+    scriptTitles: {
+        chat: document.querySelectorAll('.script-title-chat'),
+        voice: document.querySelectorAll('.script-title-voice')
     }
+};
 
-    // UI Management Class
-    class UIManager {
-        constructor(state) {
-            this.state = state;
-            this.inactivityTimeout = null;
-            this.initEventListeners();
-            this.setupTouchSwipeHandling();
-        }
+// State management
+const state = {
+    currentChannel: 'all',
+    activeNavButton: null
+};
 
-        // Initialize all event listeners
-        initEventListeners() {
-            // Sidebar toggle
-            $('#sidebarToggle')?.addEventListener('click', () => this.toggleSidebar());
-            $('#closeSidebar')?.addEventListener('click', () => this.toggleSidebar());
-            
-            $('#sidebar')?.addEventListener('mousemove', () => this.resetInactivityTimer());
-            $('#sidebar')?.addEventListener('mousedown', () => this.resetInactivityTimer());
-            $('#sidebar')?.addEventListener('keydown', () => this.resetInactivityTimer());
-            document.addEventListener('click', (e) => this.handleOutsideClick(e));
-            
+const SearchManager = {
+    isSearchActive: false, // Track if search is currently active
 
-            // Form input handling
-            $$('.form-input').forEach(input => {
-                input.addEventListener('input', e => {
-                    this.state.updateFormData(e.target.id, e.target.value);
-                });
+    // Reset all modules to inactive state
+    resetModules() {
+        document.querySelectorAll('.script-module').forEach(module => {
+            module.classList.remove('active');
+            module.querySelectorAll('.script-title-chat, .script-title-voice').forEach(title => {
+                title.classList.remove('active');
             });
-
-            // Clear form button
-            $('#clearForm')?.addEventListener('click', () => this.clearForm());
-
-            // Navigation buttons
-            $$('.nav-btn').forEach(button => {
-                button.addEventListener('click', () => this.handleNavigation(button));
+            module.querySelectorAll('.script-card-sub').forEach(card => {
+                card.classList.remove('active');
             });
-
-            // Search input with debounce
-            $('.search-input')?.addEventListener('input', this.debounce(e => {
-                const searchTerm = e.target.value.toLowerCase().trim();
-                this.performSearch(searchTerm);
-            }, CONFIG.SEARCH_DEBOUNCE_TIME));
-
-
-            $('.times-icon')?.addEventListener('click', () => {
-                $('.search-input').value = ''; // Clear the input field
-                this.performSearch(''); // Reset the search and display all sections
-            });
-
-            // Escape key to close sidebar
-            document.addEventListener('keydown', e => {
-                if (e.key === 'Escape') this.toggleSidebar();
-            });
-        }
-
-        // Debounce utility function
-        debounce(func, delay) {
-            let timeoutId;
-            return (...args) => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => func.apply(this, args), delay);
-            };
-        }
-
-        // Toggle sidebar visibility
-        toggleSidebar() {
-            const sidebar = $('#sidebar');
-            const sidebarToggle = $('#sidebarToggle');
-            
-            sidebar.classList.toggle('open');
-            sidebarToggle.classList.toggle('active');
-            
-            document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
-            sidebarToggle.setAttribute('aria-expanded', sidebar.classList.contains('open'));
-    
-            if (sidebar.classList.contains('open')) {
-                // Start the inactivity timer when the sidebar is opened
-                this.startInactivityTimer();
-            } else {
-                // Clear the inactivity timer when the sidebar is closed
-                this.clearInactivityTimer();
-            }
-        }
-    
-        // Start the inactivity timer
-        startInactivityTimer() {
-            this.clearInactivityTimer(); // Clear any existing timers first
-            this.inactivityTimeout = setTimeout(() => {
-                // Collapse the sidebar after a period of inactivity
-                this.toggleSidebar();
-            }, 5000); // Set to 5 seconds, or adjust as needed
-        }
-    
-        // Reset the inactivity timer when the user interacts with the sidebar
-        resetInactivityTimer() {
-            if (this.inactivityTimeout) {
-                clearTimeout(this.inactivityTimeout);
-                this.startInactivityTimer(); // Restart the timer on interaction
-            }
-        }
-    
-        // Clear the inactivity timer
-        clearInactivityTimer() {
-            if (this.inactivityTimeout) {
-                clearTimeout(this.inactivityTimeout);
-                this.inactivityTimeout = null;
-            }
-        }
-
-        handleOutsideClick(e) {
-            const sidebar = $('#sidebar');
-            const sidebarToggle = $('#sidebarToggle');
-            
-            if (sidebar.classList.contains('open')) {
-                // Check if the click was outside the sidebar or the toggle button
-                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
-                    // If the click is not within a script-card, collapse the sidebar
-                    if (!e.target.closest('.script-card')) {
-                        this.toggleSidebar(); // Collapse sidebar
-                    }
-                }
-            }
-        }
-
-        // Clear form and reset manual edits
-        clearForm() {
-            this.state.resetFormData();
-            $$('.form-input').forEach(input => {
-                if (input.id !== 'agentName') input.value = '';
-            });
-        
-            // Reset manual edits on all script cards
-            $$('.script-card').forEach(card => {
-                resetManualEdits(card);
-            });
-        }
-        
-        // Handle navigation between sections
-        handleNavigation(button) {
-            $$('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-    
-            $$('.interaction-section').forEach(section => {
-                section.classList.remove('active');
-                section.style.display = 'none';
-
-                section.querySelectorAll('.section-headers, .section-scripts, .script-card').forEach(el => {
-                    el.style.display = '';
-                });
-            });
-    
-            const sectionId = button.id.replace('-nav', '-section');
-            const targetSection = $(`#${sectionId}`);
-            targetSection.classList.add('active');
-            targetSection.style.display = 'block';
-    
-            const searchInput = $('.search-input');
-            if (searchInput && searchInput.value.trim() !== '') {
-                this.performSearch(searchInput.value.toLowerCase().trim());
-            }
-        }
-        
-        performSearch(searchTerm) {
-            const sections = document.querySelectorAll('.interaction-section');
-            const activeSectionId = document.querySelector('.nav-btn.active').id.replace('-nav', '-section');
-        
-            // Split search term into individual words and convert to lowercase
-            const searchWords = searchTerm.toLowerCase().split(/\s+/).filter(Boolean);
-        
-            if (searchWords.length === 0) {
-                // If search is empty, reset visibility
-                sections.forEach(section => {
-                    const sectionId = section.id;
-                    if (sectionId === activeSectionId) {
-                        section.classList.add('active');
-                        section.style.display = '';
-                        section.querySelectorAll('.section-headers, .section-scripts, .script-card').forEach(el => {
-                            el.style.display = '';
-                        });
-                    } else {
-                        section.classList.remove('active');
-                        section.style.display = 'none';
-                    }
-                });
-                return;
-            }
-        
-            sections.forEach(section => {
-                let hasMatch = false;
-        
-                section.querySelectorAll('.section-headers').forEach(header => {
-                    const headerText = header.textContent.toLowerCase();
-                    const matches = searchWords.every(word => headerText.includes(word));
-        
-                    if (matches) {
-                        header.style.display = '';
-                        header.nextElementSibling.style.display = '';
-                        hasMatch = true;
-                    } else {
-                        header.style.display = 'none';
-                        header.nextElementSibling.style.display = 'none';
-                    }
-                });
-        
-                if (hasMatch) {
-                    section.classList.add('active');
-                    section.style.display = '';
-                } else {
-                    section.classList.remove('active');
-                    section.style.display = 'none';
-                }
-            });
-        }
-        
-        setupTouchSwipeHandling() {
-            let touchStartX = 0;
-
-            document.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            document.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const swipeDistance = touchEndX - touchStartX;
-                
-                const sidebar = $('#sidebar');
-                if (Math.abs(swipeDistance) > 100) {
-                    if (swipeDistance > 0 && !sidebar.classList.contains('open')) {
-                        sidebar.classList.add('open');
-                    } else if (swipeDistance < 0 && sidebar.classList.contains('open')) {
-                        sidebar.classList.remove('open');
-                    }
-                }
-            });
-        }
-    }
-
-    // Enable text editing for manual edit spans
-    window.enableTextEdit = function (element) {
-        const currentText = element.innerText.trim();
-        const defaultText = element.getAttribute('data-default-text');
-    
-        // Allow re-triggering even if content is already modified
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = currentText === defaultText ? '' : currentText; // Preserve edited text if modified
-        input.classList.add('edit-input');
-    
-        element.innerHTML = ''; // Clear the span content
-        element.appendChild(input);
-        input.focus();
-    
-        input.addEventListener('input', function () {
-            synchronizeText(input.value, defaultText, element);
         });
-    
-        input.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                saveEditedText(element, input);
-            }
-        });
-    
-        input.addEventListener('blur', function () {
-            saveEditedText(element, input);
-        });
-    };
-    
-    // Synchronize text across matching spans
-    function synchronizeText(value, defaultText, editedElement) {
-        const allSpans = document.querySelectorAll(`[data-default-text="${defaultText}"]`);
-        allSpans.forEach(span => {
-            if (span !== editedElement) { // Skip the currently edited span
-                span.innerText = value || defaultText; // Update all matching spans in real-time
-            }
-        });
-    }
-    
-    // Save the edited text and revert to span mode
-    function saveEditedText(element, input) {
-        const newText = input.value.trim();
-        const defaultText = element.getAttribute('data-default-text');
-        element.innerHTML = newText || defaultText;
-        synchronizeText(newText, defaultText, element);
-    }
+    },
 
-    function checkIfAllEdited(scriptCard) {
-        const manualEditSpans = scriptCard.querySelectorAll('.manual-edit');
-        for (let span of manualEditSpans) {
-            const currentText = span.innerText;
-            const defaultText = span.getAttribute('data-default-text');
-            if (currentText === defaultText) {
-                enableTextEdit(span);
-                return false;
+    // Restore default state
+    restoreDefaultState() {
+        this.isSearchActive = false;
+        this.resetModules();
+        DOM.searchInput.value = ''; // Clear search input
+        ScriptManager.updateModule(); // Restore default module state
+        
+        // Restore channel-based visibility
+        const currentChannel = DOM.channelSelect.value;
+        ScriptManager.updateTitles(currentChannel);
+    },
+
+    // Activate matching modules and their components
+    activateModule(title) {
+        const scriptModule = title.closest('.script-module');
+        if (scriptModule) {
+            scriptModule.classList.add('active');
+            
+            // Get corresponding card-sub for this title
+            const cardSub = title.nextElementSibling;
+            if (cardSub && cardSub.classList.contains('script-card-sub')) {
+                cardSub.classList.add('active');
             }
+            
+            title.classList.add('active');
         }
-        return true;
-    }
+    },
 
-    function copyToClipboard(element) {
-        const spans = element.querySelectorAll('span');
-        let hasDefaultText = false;
-        let hasManualEdit = false;
+    // Extract only the heading text from title element
+    getTitleText(titleElement) {
+        const heading = titleElement.querySelector('h4');
+        return heading ? heading.textContent.trim() : '';
+    },
 
-        spans.forEach(span => {
-            const currentText = span.textContent.trim();
-            const defaultText = span.getAttribute('data-default-text');
-            if (currentText === defaultText && !span.classList.contains('manual-edit')) {
-                hasDefaultText = true;
-            }
-            if (span.classList.contains('manual-edit')) {
-                hasManualEdit = true;
-            }
-        });
-
-        if (hasDefaultText) {
-            showTooltip(element, "Please update the form before copying.");
-            openSidebar();
+    // Search implementation
+    performSearch(searchTerm) {
+        searchTerm = searchTerm.trim();
+        if (!searchTerm) {
+            this.restoreDefaultState();
             return;
         }
 
-        if (hasManualEdit) {
-            const allEdited = checkIfAllEdited(element);
-            if (!allEdited) return;
-        }
+        this.isSearchActive = true;
+        this.resetModules();
+        const searchLower = searchTerm.toLowerCase();
+        let hasResults = false;
 
-        const textToCopy = element.innerText || element.textContent;
-
-        const tempTextArea = document.createElement('textarea');
-        tempTextArea.value = textToCopy;
-
-        document.body.appendChild(tempTextArea);
-        tempTextArea.select();
-        tempTextArea.setSelectionRange(0, 99999);
-        document.execCommand('copy');
-        document.body.removeChild(tempTextArea);
-
-        showTooltip(element, "Copied!");
-    }
-
-    function showTooltip(element, message) {
-        const tooltip = document.getElementById('tooltip');
-        const rect = element.getBoundingClientRect();
-
-        tooltip.textContent = message;
-
-        const tooltipWidth = tooltip.offsetWidth;
-        const tooltipHeight = tooltip.offsetHeight;
-
-        const topPosition = rect.top + window.scrollY - tooltipHeight - 10;
-        const leftPosition = rect.left + window.scrollX + rect.width / 2 - tooltipWidth / 2;
-
-        tooltip.style.top = `${Math.max(0, topPosition)}px`;
-        tooltip.style.left = `${Math.max(0, leftPosition)}px`;
-
-        tooltip.style.opacity = 1;
-
-        setTimeout(() => {
-            tooltip.style.opacity = 0;
-        }, CONFIG.TOOLTIP_DURATION);
-    }
-
-    function openSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-
-        sidebar.classList.add('open');
-        sidebarToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        sidebarToggle.setAttribute('aria-expanded', true);
-    }
-
-    function resetManualEdits(card) {
-        const manualEditSpans = card.querySelectorAll('.manual-edit');
-        manualEditSpans.forEach(function(span) {
-            const defaultText = span.getAttribute('data-default-text');
-            span.innerHTML = defaultText;
-        });
-    }
-
-    function addResetButtonToScriptCards() {
-        document.querySelectorAll('.script-card').forEach(function(card) {
-            const manualEditSpans = card.querySelectorAll('.manual-edit');
-
-            if (manualEditSpans.length > 0) {
-                const resetButton = document.createElement('button');
-                resetButton.innerHTML = '<i class="fas fa-undo"></i>';
-                resetButton.classList.add('reset-btn');
-                resetButton.type = 'button';
-
-                resetButton.addEventListener('click', function() {
-                    resetManualEdits(card);
-                });
-
-                card.appendChild(resetButton);
+        // Search in chat titles
+        DOM.scriptTitles.chat.forEach(title => {
+            const titleText = this.getTitleText(title).toLowerCase();
+            if (titleText.includes(searchLower)) {
+                this.activateModule(title);
+                hasResults = true;
             }
         });
-    }
 
-    function attachCopyFunctionality() {
-        document.querySelectorAll('.script-card').forEach(function(card) {
-            card.addEventListener('click', function(event) {
-                if (event.target.classList.contains('manual-edit')) return;
-                copyToClipboard(card);
+        // Search in voice titles
+        DOM.scriptTitles.voice.forEach(title => {
+            const titleText = this.getTitleText(title).toLowerCase();
+            if (titleText.includes(searchLower)) {
+                this.activateModule(title);
+                hasResults = true;
+            }
+        });
+
+        if (!hasResults) {
+            console.log('No matching scripts found');
+        }
+    },
+
+    // Initialize search events
+    init() {
+        // Search button click handler
+        DOM.searchButton.addEventListener('click', () => {
+            this.performSearch(DOM.searchInput.value);
+        });
+
+        // Search input enter key handler
+        DOM.searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.performSearch(DOM.searchInput.value);
+            }
+        });
+
+        // Optional: Real-time search as user types (with debounce)
+        let debounceTimer;
+        DOM.searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                this.performSearch(DOM.searchInput.value);
+            }, 300);
+        });
+
+        // Add state restoration to navigation events
+        DOM.navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (this.isSearchActive) {
+                    this.restoreDefaultState();
+                }
+            });
+        });
+
+        // Add state restoration to channel selection
+        DOM.channelSelect.addEventListener('change', () => {
+            if (this.isSearchActive) {
+                this.restoreDefaultState();
+            }
+        });
+
+        // Add state restoration to side navigation
+        DOM.navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (this.isSearchActive) {
+                    this.restoreDefaultState();
+                }
             });
         });
     }
+};
 
-    const appState = new AppState();
-    const uiManager = new UIManager(appState);
+// Script title management
+const ScriptManager = {
+    updateTitles(channel) {
+        const elements = {
+            chat: document.querySelectorAll('.script-title-chat'),
+            voice: document.querySelectorAll('.script-title-voice')
+        };
+
+        // Helper function to toggle elements
+        const toggleElements = (elements, isActive) => {
+            elements.forEach(title => {
+                title.classList.toggle('active', isActive);
+                const cardSub = title.nextElementSibling;
+                if (cardSub?.classList.contains('script-card-sub')) {
+                    cardSub.classList.toggle('active', isActive);
+                }
+            });
+        };
+
+        // Reset all elements first
+        toggleElements(elements.chat, false);
+        toggleElements(elements.voice, false);
+
+        // Activate based on channel selection
+        if (channel === 'all' || channel === 'chat') {
+            toggleElements(elements.chat, true);
+        }
+        if (channel === 'all' || channel === 'voice') {
+            toggleElements(elements.voice, true);
+        }
+
+        state.currentChannel = channel;
+    },
+
+    updateModule() {
+        DOM.scriptModules.forEach(module => module.classList.remove('active'));
+        
+        const activeButton = DOM.scriptNavContainer.querySelector('.nav-btn.active');
+        if (activeButton) {
+            const moduleId = activeButton.id.replace('-nav', '');
+            const targetModule = document.getElementById(moduleId);
+            if (targetModule) targetModule.classList.add('active');
+        }
+    }
+};
+
+// Navigation management
+const NavigationManager = {
+    setActiveButton(button) {
+        DOM.navButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        state.activeNavButton = button;
+        ScriptManager.updateModule();
+    },
+
+    toggleActivePage(event) {
+        const navItem = event.currentTarget;
+        const targetId = navItem.querySelector('button').id.replace('-page-action', '-page');
+
+        DOM.navItems.forEach(item => item.classList.remove('active'));
+        DOM.subPages.forEach(page => page.classList.remove('active'));
+
+        navItem.classList.add('active');
+        const targetPage = document.getElementById(targetId);
+        if (targetPage) targetPage.classList.add('active');
+    }
+};
+
+// Tooltip handler with debouncing
+const TooltipManager = {
+    activeTooltip: null,
+    timeout: null,
     
-    addResetButtonToScriptCards();
-    attachCopyFunctionality();
-    appState.updatePlaceholders();
+    init() {
+        this.setupTooltips();
+        this.setupGlobalEvents();
+    },
+
+    setupTooltips() {
+        DOM.navItems.forEach(item => {
+            const tooltip = item.querySelector('.nav-tooltip');
+            
+            item.addEventListener('mouseenter', () => this.showTooltip(item, tooltip));
+            item.addEventListener('mouseleave', () => this.hideTooltip(tooltip));
+            item.addEventListener('mousemove', (e) => this.updateTooltipPosition(item, tooltip, e));
+        });
+    },
+
+    setupGlobalEvents() {
+        // Hide tooltip when scrolling for better performance
+        window.addEventListener('scroll', () => {
+            if (this.activeTooltip) {
+                this.hideTooltip(this.activeTooltip);
+            }
+        }, { passive: true });
+    },
+
+    showTooltip(item, tooltip) {
+        clearTimeout(this.timeout);
+        
+        // Hide any existing tooltip
+        if (this.activeTooltip && this.activeTooltip !== tooltip) {
+            this.hideTooltip(this.activeTooltip);
+        }
+
+        this.activeTooltip = tooltip;
+        
+        this.timeout = setTimeout(() => {
+            const itemRect = item.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            
+            // Position tooltip
+            tooltip.style.left = `${itemRect.right + 15}px`;
+            
+            // Check if tooltip would go off-screen vertically
+            const tooltipHeight = tooltip.offsetHeight;
+            let topPosition = itemRect.top + (itemRect.height / 2) - (tooltipHeight / 2);
+            
+            // Adjust if too close to top or bottom of viewport
+            if (topPosition < 10) {
+                topPosition = 10;
+            } else if (topPosition + tooltipHeight > viewportHeight - 10) {
+                topPosition = viewportHeight - tooltipHeight - 10;
+            }
+            
+            tooltip.style.top = `${topPosition}px`;
+            
+            // Add visible class for animation
+            requestAnimationFrame(() => {
+                tooltip.classList.add('visible');
+            });
+        }, 50);
+    },
+
+    hideTooltip(tooltip) {
+        clearTimeout(this.timeout);
+        
+        if (tooltip) {
+            tooltip.classList.remove('visible');
+            this.timeout = setTimeout(() => {
+                if (!tooltip.classList.contains('visible')) {
+                    tooltip.style.left = '-9999px';
+                }
+            }, 400); // Match the CSS transition duration
+        }
+        
+        if (this.activeTooltip === tooltip) {
+            this.activeTooltip = null;
+        }
+    },
+
+    updateTooltipPosition(item, tooltip, event) {
+        if (tooltip.classList.contains('visible')) {
+            const itemRect = item.getBoundingClientRect();
+            const tooltipHeight = tooltip.offsetHeight;
+            const mouseY = event.clientY;
+            
+            // Smooth follow for vertical mouse movement
+            let topPosition = mouseY - (tooltipHeight / 2);
+            
+            // Keep tooltip within bounds of the item
+            topPosition = Math.max(
+                itemRect.top,
+                Math.min(topPosition, itemRect.bottom - tooltipHeight)
+            );
+            
+            tooltip.style.top = `${topPosition}px`;
+        }
+    }
+};
+
+// Event listeners
+function initializeEventListeners() {
+    // Channel selection
+    DOM.channelSelect.addEventListener('change', (e) => 
+        ScriptManager.updateTitles(e.target.value)
+    );
+
+    // Navigation buttons
+    DOM.navButtons.forEach(button => {
+        button.addEventListener('click', () => 
+            NavigationManager.setActiveButton(button)
+        );
+    });
+
+    // Nav items and tooltips
+    DOM.navItems.forEach(item => {
+        const tooltip = item.querySelector('.nav-tooltip');
+        
+        item.addEventListener('click', NavigationManager.toggleActivePage);
+        item.addEventListener('mousemove', () => 
+            TooltipManager.handleTooltip(item, tooltip, true)
+        );
+        item.addEventListener('mouseleave', () => 
+            TooltipManager.handleTooltip(item, tooltip, false)
+        );
+    });
+}
+
+// Initialize application
+document.addEventListener('DOMContentLoaded', () => {
+    initializeEventListeners();
+    ScriptManager.updateTitles('all');
+    ScriptManager.updateModule();
+    TooltipManager.init();
+    SearchManager.init();
 });
