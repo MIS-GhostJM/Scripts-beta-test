@@ -1,0 +1,25 @@
+[
+    {
+        "id": "opening",
+        "title": "Chat Opening ETG/B.com UK",
+        "subTitle": "(Asking to wait)",
+        "cards": [
+            {
+                "content": "Hello <span class='manual-edit' data-default-text='[Cx Name]'>[Cx Name]</span>, my name is <span class='manual-edit' data-default-text='[Agent Name]'>[Agent Name]</span>. Please give me a moment to review your request."
+            },
+            {
+                "content": "Hi <span class='manual-edit' data-default-text='[Cx Name]'>[Cx Name]</span>, I'm <span class='manual-edit' data-default-text='[Agent Name]'>[Agent Name]</span>. How can I assist you today?"
+            }
+        ]
+    },
+    {
+        "id": "closing",
+        "title": "Chat Closing ETG/B.com UK",
+        "subTitle": "(End of chat)",
+        "cards": [
+            {
+                "content": "Thank you for reaching out, <span class='manual-edit' data-default-text='[Cx Name]'>[Cx Name]</span>. Have a wonderful day ahead!"
+            }
+        ]
+    }
+]
