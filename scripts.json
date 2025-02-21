@@ -2,21 +2,128 @@
   {
     "id": "opening",
     "category": "chat",
-    "title": "Chat Opening ETG/B.com UK",
-    "subtitle": "(Asking to wait)",
+    "title": "Chat Opening - General",
+    "description": "(Greeting the customer)",
     "cards": [
-      "Hello <span class='manual-edit' data-default-text='[Cx Name]' onclick='enableTextEdit(this)'>[Cx Name]</span>, my name is <span class='manual-edit' data-default-text='[Agent Name]' onclick='enableTextEdit(this)'>[Agent Name]</span>. Please give me a moment to review your request.",
-      "Thank you for calling."
+      { "content": "Hello [Cx Name], my name is [Agent Name]. How can I assist you today?" },
+      { "content": "Good day [Cx Name], I'm [Agent Name]. What can I do for you?" }
+    ]
+  },
+  {
+    "id": "opening",
+    "category": "voice",
+    "title": "Voice Opening - General",
+    "description": "(Phone greeting)",
+    "cards": [
+      { "content": "Hi [Cx Name], this is [Agent Name]. How may I help you?" }
+    ]
+  },
+  {
+    "id": "closing",
+    "category": "chat",
+    "title": "Chat Closing - General",
+    "description": "(Ending the conversation)",
+    "cards": [
+      { "content": "Thank you for reaching out, [Cx Name]. Have a great day!" }
     ]
   },
   {
     "id": "closing",
     "category": "voice",
-    "title": "Voice Closing ETG/B.com UK",
-    "subtitle": "(End of conversation)",
+    "title": "Voice Closing - General",
+    "description": "(Ending the call)",
     "cards": [
-      "Thank you, <span class='manual-edit' data-default-text='[Cx Name]' onclick='enableTextEdit(this)'>[Cx Name]</span>. Have a great day!",
-      "Goodbye!"
+      { "content": "Thanks for calling, [Cx Name]. Take care!" }
+    ]
+  },
+  {
+    "id": "hold",
+    "category": "chat",
+    "title": "Chat Hold - Request",
+    "description": "(When placing the customer on hold)",
+    "cards": [
+      { "content": "Please give me a moment, [Cx Name], while I look into that for you." }
+    ]
+  },
+  {
+    "id": "hold",
+    "category": "voice",
+    "title": "Voice Hold - Request",
+    "description": "(Hold during call)",
+    "cards": [
+      { "content": "[Cx Name], can I put you on hold for a moment while I check this?" }
+    ]
+  },
+  {
+    "id": "transfer",
+    "category": "chat",
+    "title": "Chat Transfer Notice",
+    "description": "(When transferring a chat)",
+    "cards": [
+      { "content": "[Cx Name], I'll transfer you to the right department. Please wait." }
+    ]
+  },
+  {
+    "id": "transfer",
+    "category": "voice",
+    "title": "Voice Transfer Notice",
+    "description": "(Call transfer)",
+    "cards": [
+      { "content": "[Cx Name], let me connect you to someone who can assist further." }
+    ]
+  },
+  {
+    "id": "followup",
+    "category": "chat",
+    "title": "Chat Follow-Up",
+    "description": "(Following up on an issue)",
+    "cards": [
+      { "content": "Hi [Cx Name], just checking if you still need assistance?" }
+    ]
+  },
+  {
+    "id": "followup",
+    "category": "voice",
+    "title": "Voice Follow-Up",
+    "description": "(Checking back on hold)",
+    "cards": [
+      { "content": "[Cx Name], thanks for holding. I’m still looking into this." }
+    ]
+  },
+  {
+    "id": "reminder",
+    "category": "chat",
+    "title": "Chat Reminder",
+    "description": "(Gentle reminder)",
+    "cards": [
+      { "content": "[Cx Name], just a quick reminder about your pending request." }
+    ]
+  },
+  {
+    "id": "reminder",
+    "category": "voice",
+    "title": "Voice Reminder",
+    "description": "(Follow-up reminder)",
+    "cards": [
+      { "content": "Just reminding you, [Cx Name], about our earlier discussion." }
+    ]
+  },
+  {
+    "id": "error_handling",
+    "category": "chat",
+    "title": "Chat Error Handling",
+    "description": "(Addressing an issue)",
+    "cards": [
+      { "content": "I’m sorry for the inconvenience, [Cx Name]. Let me fix that right away." }
+    ]
+  },
+  {
+    "id": "error_handling",
+    "category": "voice",
+    "title": "Voice Error Handling",
+    "description": "(Call troubleshooting)",
+    "cards": [
+      { "content": "Apologies for the trouble, [Cx Name]. I'll sort this out for you now." }
     ]
   }
 ]
