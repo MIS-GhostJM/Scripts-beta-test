@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="errands.css">
+    <link rel="stylesheet" href="app-style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>A C E S</title>
 </head>
@@ -88,95 +87,16 @@
                 <!--Script Page-->
                 <div class="sub-page active" id="script-page">
                     <div class="script-nav-container">
-                        <!--Voice Nav-->
                         <button id="opening-nav" class="nav-btn active">Opening</button>
-                        <button id="closing-nav" class="nav-btn">Closing</button>
-                        <button id="hold-nav" class="nav-btn">Hold</button>
-                        <button id="helpful-statement-nav" class="nav-btn">Helpful Statement</button>
                     </div>
 
-                    <div class="script-canvas">
-                        <!--Chat Opening-->               
-                            <div class="script-module active" id="opening">
-                                <div class="script-title-chat active">
-                                    <h4>Chat Opening ETG/B.com UK</h4>
-                                    <p>(Asking to wait)</p>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. Please give me a moment to review your request.
-                                    </div>
-                                    <div class="card-module">
-                                        Thank for Calling
-                                    </div>
-                                </div>
-                                <div class="script-title-voice active">
-                                    <h4>Chat Opening (asking to wait) ETG/B.com UK</h4>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        <p>Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. Please give me a moment to review your request.</p>
-                                    </div>
-                                </div>
-                                <div class="script-title-voice active">
-                                    <h4>Transform</h4>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        <p>Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. Please give me a moment to review your request.</p>
-                                    </div>
-                                </div>
-                                <div class="script-title-chat active">
-                                    <h4>Chat Opening ETG/B.com UK</h4>
-                                    <p>(Asking to state the request)</p>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        <p>Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. How may I help you with your booking?.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        <!--Chat Opening---End-->
-                        <!--Closing Start-->
-                            <div class="script-module" id="closing">
-                                <div class="script-title-chat active">
-                                    <h4>Chat Opening ETG/B.com UK</h4>
-                                    <p>(Asking to wait)</p>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        <p>Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. Please give me a moment to review your request.</p>
-                                    </div>
-                                </div>
-                                <div class="script-title-voice active">
-                                    <h4>Chat Opening (asking to wait) ETG/B.com UK</h4>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        <p>Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. Please give me a moment to review your request.</p>
-                                    </div>
-                                </div>
-                                <div class="script-title-chat active">
-                                    <h4>Chat Opening ETG/B.com UK</h4>
-                                    <p>(Asking to state the request)</p>
-                                </div>
-                                <div class="script-card-sub">
-                                    <div class="card-module">
-                                        <p>Hello <span class="manual-edit" data-default-text="[Cx Name]" onclick="enableTextEdit(this)">[Cx Name]</span>, my name is <span class="manual-edit" data-default-text="[Agent Name]" onclick="enableTextEdit(this)">[Agent Name]</span>. How may I help you with your booking?.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        <!--Closing END-->
-                    </div>
+                    <div class="script-canvas"></div>
                 </div>
             </div>
         </main>
     </div>
-    <script src="app.js"></script>
-    <script src="script.js"></script>
-    <script src="errandsfunction.js"></script>
-    <script src="copy-functions.js"></script>
-    <script src="main-inputs.js"></script>
-    <script src="script-loader.js"></script>
+    <script src="script.js" defer></script>
+    <script src="copy-functions.js" defer></script>
+    <script src="sync-inputs.js" defer></script>
 </body>
 </html>
