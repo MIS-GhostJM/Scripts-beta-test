@@ -3,7 +3,7 @@
 const CONFIG = {
     tooltipDuration: 1500,
     animationDuration: 100,
-    minEditableLength: 2,
+    minEditableLength: 1,
     tooltipMessages: {
         success: '✓ Copied to clipboard',
         empty: '⚠️ Please fill in all fields',
@@ -58,19 +58,18 @@ class EditStateManager {
     }
 }
 
+// Revised EnhancedTooltip to fix vertical scroll issue
+
 class EnhancedTooltip {
     constructor() {
-        this.element = this.createTooltipElement();
+        this.element = document.createElement('div');
+        this.element.className = CONFIG.classes.tooltip;
+        document.body.appendChild(this.element);
         this.timeout = null;
         this.currentCard = null;
-        this.initializeEventListeners();
-    }
 
-    createTooltipElement() {
-        const tooltip = document.createElement('div');
-        tooltip.className = CONFIG.classes.tooltip;
-        document.body.appendChild(tooltip);
-        return tooltip;
+        window.addEventListener('scroll', () => this.reposition(), { passive: true });
+        window.addEventListener('resize', () => this.reposition(), { passive: true });
     }
 
     show(message, type = 'success', targetElement) {
@@ -79,7 +78,7 @@ class EnhancedTooltip {
         this.element.textContent = message;
         this.position(targetElement);
 
-        if (this.timeout) clearTimeout(this.timeout);
+        clearTimeout(this.timeout);
         this.timeout = setTimeout(() => this.hide(), CONFIG.tooltipDuration);
     }
 
@@ -89,37 +88,24 @@ class EnhancedTooltip {
     }
 
     position(targetElement) {
-        const targetRect = targetElement.getBoundingClientRect();
-        const tooltipRect = this.element.getBoundingClientRect();
-        
-        // Calculate position relative to viewport
-        const left = Math.max(
-            10,
-            Math.min(
-                targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2),
-                window.innerWidth - tooltipRect.width - 10
-            )
-        );
-        
-        // Position above the target with a gap
-        const top = Math.max(
-            10,
-            targetRect.top - tooltipRect.height - 10
-        );
-        
-        // Use transform for smoother animations
-        this.element.style.transform = `translate3d(${left}px, ${top}px, 0)`;
-        this.element.style.left = '0';
-        this.element.style.top = '0';
+        const { left, top, width, height } = targetElement.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+        const tooltipWidth = this.element.offsetWidth;
+        const tooltipHeight = this.element.offsetHeight;
+
+        const posX = Math.max(10, Math.min(left + scrollLeft + width / 2 - tooltipWidth / 2, window.innerWidth + scrollLeft - tooltipWidth - 10));
+        const posY = Math.max(10, top + scrollTop - tooltipHeight - 10);
+
+        this.element.style.left = `${posX}px`;
+        this.element.style.top = `${posY}px`;
     }
 
-    initializeEventListeners() {
-        window.addEventListener('scroll', () => this.hide(), { passive: true });
-        window.addEventListener('resize', () => {
-            if (this.currentCard) this.position(this.currentCard);
-        }, { passive: true });
+    reposition() {
+        if (this.currentCard) this.position(this.currentCard);
     }
 }
+
 
 class EditableField {
     constructor(element, stateManager) {
@@ -198,12 +184,24 @@ class CardModule {
         this.addResetButton();
         this.initializeEditableFields();
         this.initializeEventListeners();
+        this.checkAndAddResetButton();
+
+    }
+    
+    checkAndAddResetButton() {
+        const hasEditableFields = this.card.querySelector(`.${CONFIG.classes.editableField}`);
+        const existingButton = this.card.querySelector(`.${CONFIG.classes.resetButton}`);
+        if (hasEditableFields && !existingButton) {
+            this.addResetButton();
+        } else if (!hasEditableFields && existingButton) {
+            existingButton.remove();
+        }
     }
 
     addResetButton() {
         const resetButton = document.createElement('button');
         resetButton.className = CONFIG.classes.resetButton;
-        resetButton.innerHTML = 'Reset';
+        resetButton.innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
         resetButton.setAttribute('aria-label', 'Reset all fields to default');
         this.card.appendChild(resetButton);
     }
@@ -312,6 +310,7 @@ const addEnhancedStyles = () => {
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             border: 1px solid rgba(255,255,255,0.2);
             white-space: nowrap;
+            display: none;
         }
 
         .${CONFIG.classes.tooltip}.error {
@@ -321,19 +320,20 @@ const addEnhancedStyles = () => {
         .${CONFIG.classes.tooltip}.show {
             opacity: 1;
             transform: translateY(0);
+            display: block;
         }
 
         .${CONFIG.classes.card} {
             position: relative;
             cursor: pointer;
             transition: all 0.2s ease;
-            padding: 12px 12px 40px 12px;
-            border-radius: 6px;
+            padding: 8px;
+            border-radius: 0 20px 20px 0;
         }
 
         .${CONFIG.classes.card}:hover {
             transform: translateX(5px);
-            background: rgba(52, 152, 219, 0.05);
+            background: rgb(255, 255, 255);
         }
 
         .${CONFIG.classes.card}.copying {
@@ -364,14 +364,14 @@ const addEnhancedStyles = () => {
 
         .${CONFIG.classes.resetButton} {
             position: absolute;
-            bottom: 8px;
-            right: 12px;
+            top: 8px;
+            right: 10px;
             background: #e74c3c;
             color: white;
             border: none;
-            border-radius: 4px;
-            padding: 4px 12px;
-            font-size: 12px;
+            border-radius: 12px;
+            padding: 4px 4px;
+            font-size: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
             opacity: 0.8;
