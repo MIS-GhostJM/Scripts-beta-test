@@ -167,5 +167,118 @@
     ],
     "tags": [],
     "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Question before closing ETG/B.com UK",
+    "description": "",
+    "cards": [
+      {
+        "content": "Is there anything else I can assist you with today?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Close chat ETG/B.com UK",
+    "description": "When the customer responds \"no\" to a question \"Is there anything else I can help you with?",
+    "cards": [
+      {
+        "content": "Thank you for reaching out. Have a wonderful day!"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Customer doesn't respond 1st Warning ETG/B.com UK",
+    "description": "To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 min.",
+    "cards": [
+      {
+        "content": " ETG/B.com UK To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 min.  Hi, I wanted to check in to see if you're still with us. Please reply so I can continue assisting you. If I don't hear from you in the next 3 minutes, the chat will close due to inactivity.<br><br>Don't worry - you can always reach out again whenever you’re ready. We’re here to help!"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Close chat after no response for 5 min ETG/B.com UK",
+    "description": "",
+    "cards": [
+      {
+        "content": "I still haven't received a response, and it seems that you are no longer connected. This chat will now be closed. If you need further assistance, please start a new chat. Thank you!."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Thanking and checking if customer needs any further help",
+    "description": "",
+    "cards": [
+      {
+        "content": "It was a pleasure to have assisted you today . Would there be anything else I can help you with?"
+      },
+      {
+        "content": "I'm glad I have been able to assist you today. Please let me know if you have any further questions or concerns."
+      },
+      {
+        "content": "Is there anything else I can help you with?."
+      },
+      {
+        "content": "Thank you for contacting us. Have a nice day!."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "The customer is already unhappy with our service we need to use this script instead of using a standard closing script",
+    "description": "",
+    "cards": [
+      {
+        "content": "We apologize for the inconvenience, but we're unable to assist you at this moment. Your satisfaction is important to us, and we're continuously striving to improve our service. Please feel free to reach out in the future for any assistance. This chat will now close."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 minutes",
+    "description": "",
+    "cards": [
+      {
+        "content": "I didn't receive any response, and I want to make sure we're still connected. Let me know by responding to the chat. Otherwise, this chat will close in 3 minutes."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Close chat after no response for 5 minutes",
+    "description": "",
+    "cards": [
+      {
+        "content": " I still haven't received any response, and it seems that you are no longer connected. This chat will now be closed. If you need further assistance, please start a new chat. Thank you."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
   }
 ]
