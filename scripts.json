@@ -10,6 +10,16 @@
       ]
     },
     {
+        "id": "opening",
+        "category": "chat",
+        "title": "Chat Opening - General",
+        "description": "(Greeting the customer)",
+        "cards": [
+          { "content": "Hi [Cx Name], my name is [Agent Name]. How can I assist you today?" },
+          { "content": "Hello! [Cx Name], I'm [Agent Name]. What can I do for you?" }
+        ]
+    },
+    {
       "id": "opening",
       "category": "voice",
       "title": "Voice Opening - General",
