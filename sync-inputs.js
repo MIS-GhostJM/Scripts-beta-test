@@ -92,34 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generateMergedScriptModules(scripts) {
         const scriptGroups = scripts.reduce((groups, script) => {
-            if (!groups[script.id]) {
-                groups[script.id] = [];
-            }
+            if (!groups[script.id]) groups[script.id] = [];
             groups[script.id].push(script);
             return groups;
         }, {});
-    
+
         Object.entries(scriptGroups).forEach(([scriptId, scriptsGroup]) => {
             const isActive = scriptId === 'Opening';
-            
-            // Create the module div for this script ID
             const moduleDiv = document.createElement('div');
             moduleDiv.classList.add('script-module');
             if (isActive) moduleDiv.classList.add('active');
             moduleDiv.id = scriptId;
-    
-            scriptsGroup.forEach((script) => {
-                // Always create a unique title div for each script
+
+            scriptsGroup.forEach(script => {
                 const titleDiv = document.createElement('div');
                 titleDiv.classList.add(`script-title-${script.category}`);
                 if (isActive) titleDiv.classList.add('active');
-                titleDiv.innerHTML = `
-                    <h4>${script.title}</h4>
-                    <p>${script.description}</p>
-                `;
+                titleDiv.innerHTML = `<h4>${script.title}</h4>`;
+
+                // Conditionally add description if not empty
+                if (script.description.trim() !== '') {
+                    const descPara = document.createElement('p');
+                    descPara.textContent = script.description;
+                    titleDiv.appendChild(descPara);
+                }
+
                 moduleDiv.appendChild(titleDiv);
-    
-                // Always create a unique card-sub div for each title, even if the title is duplicated
+
                 let cardSubDiv = titleDiv.nextElementSibling;
                 if (!cardSubDiv || !cardSubDiv.classList.contains('script-card-sub')) {
                     cardSubDiv = document.createElement('div');
@@ -127,21 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (isActive) cardSubDiv.classList.add('active');
                     moduleDiv.appendChild(cardSubDiv);
                 }
-    
-                // Create a new card for each script
+
                 script.cards.forEach(card => {
                     const cardDiv = document.createElement('div');
                     cardDiv.classList.add('card-module');
                     cardDiv.innerHTML = convertToEditable(card.content);
-                    
                     if (typeof CardModule !== 'undefined' && stateManager) {
                         new CardModule(cardDiv, stateManager);
                     }
-                    
                     cardSubDiv.appendChild(cardDiv);
                 });
             });
-    
+
             scriptCanvas.appendChild(moduleDiv);
         });
     }
