@@ -6,7 +6,7 @@
     "description": "",
     "cards": [
       {
-        "content": " Hello [Cx Name], my name is [Agent name]. Please give me a moment to review your request."
+        "content": " Hello [Cx Name], my name is [Agent Name]. Please give me a moment to review your request."
       }
     ],
     "tags": [],
@@ -19,7 +19,7 @@
     "description": "",
     "cards": [
       {
-        "content": "Hello [Cx Name], my name is [Agent name]. How may I help you with your booking?. "
+        "content": "Hello [Cx Name], my name is [Agent Name]. How may I help you with your booking?. "
       }
     ],
     "tags": [],
@@ -32,7 +32,7 @@
     "description": "The customer has gone through the workflow and is waiting to be connected to the agent",
     "cards": [
       {
-        "content": "Hi [Cx Name], this is [Agent name]. Thank you for your patience as we handle a high volume of requests. I'll review your case details and be with you shortly!"
+        "content": "Hi [Cx Name], this is [Agent Name]. Thank you for your patience as we handle a high volume of requests. I'll review your case details and be with you shortly!"
       }
     ],
     "tags": [],
@@ -45,7 +45,7 @@
     "description": "The customer has gone through our chatbot however his query was not resolved and is now connected to the agent",
     "cards": [
       {
-        "content": "Hi [Cx Name], this is [Agent name] from [Brand] Support. I noticed our chatbot couldn't fully assist you—my apologies for the inconvenience, and thank you for your patience! I'll review your case details and be with you shortly!"
+        "content": "Hi [Cx Name], this is [Agent Name] from [Brand] Support. I noticed our chatbot couldn't fully assist you—my apologies for the inconvenience, and thank you for your patience! I'll review your case details and be with you shortly!"
       }
     ],
     "tags": [],
@@ -84,7 +84,7 @@
     "description": "",
     "cards": [
       {
-        "content": "Hello, [Cx Name]! My name is [Agent name]. To assist you, I will need your order number."
+        "content": "Hello, [Cx Name]! My name is [Agent Name]. To assist you, I will need your order number."
       }
     ],
     "tags": [],
@@ -97,7 +97,7 @@
     "description": "",
     "cards": [
       {
-        "content": "Hello, [Cx Name]! My name is [Agent name]. Please give me a moment to review your request."
+        "content": "Hello, [Cx Name]! My name is [Agent Name]. Please give me a moment to review your request."
       }
     ],
     "tags": [],
@@ -110,7 +110,7 @@
     "description": "",
     "cards": [
       {
-        "content": "Hello, [Cx Name]! My name is [Agent name]. How may I help you with your booking?"
+        "content": "Hello, [Cx Name]! My name is [Agent Name]. How may I help you with your booking?"
       }
     ],
     "tags": [],
