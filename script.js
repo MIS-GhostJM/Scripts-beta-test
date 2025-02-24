@@ -299,7 +299,7 @@ const TooltipManager = {
                 if (!tooltip.classList.contains('visible')) {
                     tooltip.style.left = '-9999px';
                 }
-            }, 400); // Match the CSS transition duration
+            }, 100); // Match the CSS transition duration
         }
         
         if (this.activeTooltip === tooltip) {
