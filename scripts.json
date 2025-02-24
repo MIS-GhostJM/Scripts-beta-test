@@ -238,5 +238,193 @@
         "content": " I still haven't received any response, and it seems that you are no longer connected. This chat will now be closed. If you need further assistance, please start a new chat. Thank you."
       }
     ]
+  },
+  {
+    "id": "Hold",
+    "category": "chat",
+    "title": "Putting customer on hold",
+    "description": "",
+    "cards": [
+      {
+        "content": "Please give me a moment to review your information. It won't take more than 5 minutes."
+      }
+    ]
+  },
+  {
+    "id": "Hold",
+    "category": "chat",
+    "title": "Refresh/Extend Hold",
+    "description": "",
+    "cards": [
+      {
+        "content": "Thank you for waiting. But I will need 5 more minutes to work on your request."
+      },
+      {
+        "content": "Thank you for your continued patience. I will require a 5 extra minutes to thoroughly work on your request."
+      },
+      {
+        "content": "I appreciate your understanding during this time. I will need a 5 more minutes to ensure your request is handled properly."
+      },
+      {
+        "content": "I appreciate your patience. I would be needing a few additional minutes to complete your request. I'll give you update within 5 minutes."
+      }
+    ]
+  },
+  {
+    "id": "Hold",
+    "category": "chat",
+    "title": "Customer Proceed with request",
+    "description": "",
+    "cards": [
+      {
+        "content": "Thank you. Please give me a moment to process your request. I will need an additional 5 minutes, please."
+      }
+    ]
+  },
+  {
+    "id": "Payment",
+    "category": "chat",
+    "title": "When sending payment link on email",
+    "description": "",
+    "cards": [
+      {
+        "content": "Thank you, [Cx Name]! I have shared a payment link on your registered email address. Please make the payment and let me know. You can use the link within the next 5 minutes to complete the payment. Please be aware that not responding within this timeframe will result in this chat being disconnected. If you cannot access the payment link or have any other questions, please let me know, and I'll be happy to assist you."
+      }
+    ]
+  },
+  {
+    "id": "Payment",
+    "category": "chat",
+    "title": "When sending payment link in chatbox",
+    "description": "",
+    "cards": [
+      {
+        "content": "Thank you, [Cx Name]! I've included a payment link in this chat window. Please open the link in a separate browser tab without closing the chat. You can use the link within the next 5 minutes to complete the payment. Please be aware that not responding within this timeframe will result in this chat being disconnected. If you cannot access the payment link or have any other questions, please let me know, and I'll be happy to assist you."
+      }
+    ]
+  },
+  {
+    "id": "Payment",
+    "category": "chat",
+    "title": "Payment successfully received",
+    "description": "for Baggage/Seating/Special equipment",
+    "cards": [
+      {
+        "content": "Thank you, [Cx Name] for your payment. Within 24 hours, you’ll receive an email confirming your (Baggage/seating/special), linked to your airline reference number. If you don't see the confirmation in your inbox, please check your spam folder."
+      }
+    ]
+  },
+  {
+    "id": "Payment",
+    "category": "chat",
+    "title": "When the customer is not ready to make the payment within 30 minutes",
+    "description": "",
+    "cards": [
+      {
+        "content": "No problem at all, [Cx Name]. Please note the payment will expire after 30 minutes. You may contact us again when you're ready to make the payment so we can send you the new link."
+      }
+    ]
+  },
+  {
+    "id": "Handling Objections",
+    "category": "chat",
+    "title": "Objection on ETG service fee",
+    "description": "",
+    "cards": [
+      {
+        "content": "Our service fee covers your case handling, including all necessary communication and administrative work with the airline. As your travel agency, we’re committed to managing all paperwork and follow-up to ensure that the process is handled smoothly. Please feel free to reach out if you have any additional questions regarding this matter."
+      }
+    ]
+  },
+  {
+    "id": "Handling Objections",
+    "category": "chat",
+    "title": "If customer has an objection when referred to the airline",
+    "description": "",
+    "cards": [
+      {
+        "content": "As your travel agency, we're here to make your booking experience as smooth as possible and assist with your travel needs. While we can help with most inquiries, like itinerary changes and general questions, there are some cases where you'll need to contact the airline directly. This is due to airline policies that require their intervention. Rest assured, we’ll continue to support you in any way we can to ensure your trip goes smoothly."
+      }
+    ]
+  },
+  {
+    "id": "Handling Objections",
+    "category": "chat",
+    "title": "The case is already with Support and we are waiting for airline reply",
+    "description": "",
+    "cards": [
+      {
+        "content": "Our team is still waiting for a response from the airline. We will get back to you as soon as we have an update."
+      }
+    ]
+  },
+  {
+    "id": "Handling Objections",
+    "category": "chat",
+    "title": "When the refund process takes more than 15 business days",
+    "description": "",
+    "cards": [
+      {
+        "content": "We totally understand how frustrating it can be when things take longer than expected, and we're really sorry if this delay has caused any inconvenience to you. Rest assured, we're doing all we can to speed up this refund process. Normally, once we get the go-ahead from the airline, we aim to sort it out within about 6 days. But sometimes, delays beyond our control can happen. Please kindly note, any extra delay might not be our fault—sometimes it's down to how quickly your bank processes the refund once we've sent it over. Thanks for bearing with us while we get this sorted. We genuinely appreciate your patience and understanding during this time. If you've got any other questions or need a hand with anything else, just let us know. We're here to help!"
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "If customer has an objection on airline costs",
+    "description": "",
+    "cards": [
+      {
+        "content": "The price of a ticket is based on demand and set by the airline – the fare is higher for the date and time you are choosing than the ticket you originally paid for. If you are flexible, I can search for 2 to 3 different travel dates/times for a lesser fare difference. Would you like me to do that?"
+      }
+    ]
+  },
+  {
+    "id": "Handling Objections",
+    "category": "chat",
+    "title": "The customer keeps pushing back after the agent has repeatedly tried educating the customer in regards to their refund delay",
+    "description": "",
+    "cards": [
+      {
+        "content": "I acknowledge your frustration but we have already provided all the information we have. I regret that I will need to disconnect this chat, which is inevitable due to many other customers waiting in our queues. We are doing our best in order to get your refund. Therefore I'm going to disconnect the chat, thank you for understanding."
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "When customer agrees to a supervisor call within the next 24H",
+    "description": "",
+    "cards": [
+      {
+        "content": "Thank you, [Cx Name]. One of our supervisors will contact you at the phone number provided within 24 hours."
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "I will sue your company",
+    "description": "",
+    "cards": [
+      {
+        "content": "We totally understand your point of view, however, we would like to assure you that we have already taken all the necessary actions regarding your request and no further actions are required from your side."
+      }
+    ]
+  },
+  {
+    "id": "Handling Objections",
+    "category": "chat",
+    "title": "Will I get compensation?",
+    "description": "",
+    "cards": [
+      {
+        "content": "While we may understand the reason for your request we do not handle any compensation-related requests over the telephone. You may submit your request through our contact form and our Customer Relations team will investigate and reply accordingly"
+      },
+      {
+        "content": "Please take into consideration that due to increased volumes it might take some time until you receive a response."
+      }
+    ]
   }
 ]
