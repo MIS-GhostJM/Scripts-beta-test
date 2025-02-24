@@ -1,129 +1,242 @@
 [
   {
-    "id": "opening",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Opening - General",
-    "description": "(Greeting the customer)",
+    "title": "Chat Opening ETG/B.com UK",
+    "description": "Chat Opening ETG/B.com UK",
     "cards": [
-      { "content": "Hello [Cx Name], my name is [Agent Name]. How can I assist you today?" },
-      { "content": "Good day [Cx Name], I'm [Agent Name]. What can I do for you?" }
+      {
+        "content": " Hello [Cx Name], my name is [Agent name]. Please give me a moment to review your request."
+      }
     ]
   },
   {
-    "id": "opening",
-    "category": "voice",
-    "title": "Voice Opening - General",
-    "description": "(Phone greeting)",
-    "cards": [
-      { "content": "Hi [Cx Name], this is [Agent Name]. How may I help you?" }
-    ]
-  },
-  {
-    "id": "closing",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Closing - General",
-    "description": "(Ending the conversation)",
+    "title": "Chat Opening ETG/B.com UK",
+    "description": "asking to state the request",
     "cards": [
-      { "content": "Thank you for reaching out, [Cx Name]. Have a great day!" }
+      {
+        "content": "Hello [Cx Name], my name is [Agent name]. How may I help you with your booking?."
+      }
     ]
   },
   {
-    "id": "closing",
-    "category": "voice",
-    "title": "Voice Closing - General",
-    "description": "(Ending the call)",
-    "cards": [
-      { "content": "Thanks for calling, [Cx Name]. Take care!" }
-    ]
-  },
-  {
-    "id": "hold",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Hold - Request",
-    "description": "(When placing the customer on hold)",
+    "title": "Chat Opening due to long wait time (more than 5 minutes) Request stated ETG/B.com UK",
+    "description": "The customer has gone through the workflow and is waiting to be connected to the agent",
     "cards": [
-      { "content": "Please give me a moment, [Cx Name], while I look into that for you." }
+      {
+        "content": "Hi [Cx Name], this is [Agent name]. Thank you for your patience as we handle a high volume of requests. I'll review your case details and be with you shortly!"
+      }
     ]
   },
   {
-    "id": "hold",
-    "category": "voice",
-    "title": "Voice Hold - Request",
-    "description": "(Hold during call)",
-    "cards": [
-      { "content": "[Cx Name], can I put you on hold for a moment while I check this?" }
-    ]
-  },
-  {
-    "id": "transfer",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Transfer Notice",
-    "description": "(When transferring a chat)",
+    "title": "Chat Opening after connecting with the chat BOT (but no resolution) ETG UK",
+    "description": "The customer has gone through our chatbot however his query was not resolved and is now connected to the agent",
     "cards": [
-      { "content": "[Cx Name], I'll transfer you to the right department. Please wait." }
+      {
+        "content": "Hi [Cx Name], this is [Agent name] from [Brand] Support. I noticed our chatbot couldn't fully assist you—my apologies for the inconvenience, and thank you for your patience! I'll review your case details and be with you shortly!"
+      }
     ]
   },
   {
-    "id": "transfer",
-    "category": "voice",
-    "title": "Voice Transfer Notice",
-    "description": "(Call transfer)",
-    "cards": [
-      { "content": "[Cx Name], let me connect you to someone who can assist further." }
-    ]
-  },
-  {
-    "id": "followup",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Follow-Up",
-    "description": "(Following up on an issue)",
+    "title": "Order not found (request to spell provider's URL) ETG UK",
+    "description": "When the customer provides an order number which is related to other OTAs/provider's booking",
     "cards": [
-      { "content": "Hi [Cx Name], just checking if you still need assistance?" }
+      {
+        "content": "Thanks for providing the order number! It looks like this one isn't from our site. Kindly provide the correct spelling of the email address linked to your confirmation email. If that is unavailable, please spell out the URL [website address] where you purchased your ticket."
+      }
     ]
   },
   {
-    "id": "followup",
-    "category": "voice",
-    "title": "Voice Follow-Up",
-    "description": "(Checking back on hold)",
-    "cards": [
-      { "content": "[Cx Name], thanks for holding. I’m still looking into this." }
-    ]
-  },
-  {
-    "id": "reminder",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Reminder",
-    "description": "(Gentle reminder)",
+    "title": "Order not found (potentially booked with another provider) ETG UK",
+    "description": "When the customer provides a name/site's URL which is related to other OTAs/provider's booking",
     "cards": [
-      { "content": "[Cx Name], just a quick reminder about your pending request." }
+      {
+        "content": "Thanks for sharing your booking reference! It seems the number provided doesn’t match a ticket purchased through our website and may have been purchased elsewhere. If you have another reference number, please provide it now. Otherwise, it's best to reach out directly to the provider. Let me know if there's anything else I can assist you with!"
+      }
     ]
   },
   {
-    "id": "reminder",
-    "category": "voice",
-    "title": "Voice Reminder",
-    "description": "(Follow-up reminder)",
-    "cards": [
-      { "content": "Just reminding you, [Cx Name], about our earlier discussion." }
-    ]
-  },
-  {
-    "id": "error_handling",
+    "id": "Opening",
     "category": "chat",
-    "title": "Chat Error Handling",
-    "description": "(Addressing an issue)",
+    "title": "Asking for Order Number",
+    "description": "",
     "cards": [
-      { "content": "I’m sorry for the inconvenience, [Cx Name]. Let me fix that right away." }
+      {
+        "content": " Hello, [Cx Name]! My name is [Agent name]. To assist you, I will need your order number."
+      }
     ]
   },
   {
-    "id": "error_handling",
-    "category": "voice",
-    "title": "Voice Error Handling",
-    "description": "(Call troubleshooting)",
+    "id": "Opening",
+    "category": "chat",
+    "title": "Chat Opening (asking to wait)",
+    "description": "",
     "cards": [
-      { "content": "Apologies for the trouble, [Cx Name]. I'll sort this out for you now." }
+      {
+        "content": "Hello, [Cx Name]! My name is [Agent name]. Please give me a moment to review your request."
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "Chat Opening (asking to state the request)",
+    "description": "",
+    "cards": [
+      {
+        "content": " Hello, [Cx Name]! My name is [Agent name]. How may I help you with your booking? "
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "When the customer doesn't have the order number",
+    "description": "",
+    "cards": [
+      {
+        "content": "To assist you, I need to find your booking first. Please provide one of the following: E-ticket number: Booking / airline reference number: Transaction number / approval code:"
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "Order not found",
+    "description": "potentially booked with other provider",
+    "cards": [
+      {
+        "content": "We're sorry to inform you that the booking reference does not match a ticket purchased through our website. It appears that your ticket was acquired through another company. If you have any additional questions or concerns, please don't hesitate to reach out to us again."
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "Chat Opening due to long wait time (more than 5 minutes) Request stated",
+    "description": "",
+    "cards": [
+      {
+        "content": "Hi [Cx Name] from [Brand] support, and I'm here to assist you today. Due to the high volume of requests we are receiving, you might have experienced delays. Thank you for your patience and understanding. Please allow me a few minutes to review your case."
+      }
+    ]
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "Chat Opening due to long wait time Request NOT stated",
+    "description": "more than 5 minutes",
+    "cards": [
+      {
+        "content": "Hi [Cx Name] from [Brand] support, and I'm here to assist you today. Due to the high volume of requests we are receiving, you might have experienced delays. Thank you for your patience and understanding. How may I help you with your booking?"
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Question before closing ETG/B.com UK",
+    "description": "",
+    "cards": [
+      {
+        "content": "Is there anything else I can assist you with today?"
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Close chat ETG/B.com UK",
+    "description": "When the customer responds \"no\" to a question \"Is there anything else I can help you with?",
+    "cards": [
+      {
+        "content": "Thank you for reaching out. Have a wonderful day!"
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Customer doesn't respond 1st Warning ETG/B.com UK",
+    "description": "To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 min.",
+    "cards": [
+      {
+        "content": "Hi, I wanted to check in to see if you're still with us. Please reply so I can continue assisting you. If I don't hear from you in the next 3 minutes, the chat will close due to inactivity. Don't worry - you can always reach out again whenever you’re ready. We’re here to help!"
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Close chat after no response for 5 min ETG/B.com UK",
+    "description": "",
+    "cards": [
+      {
+        "content": "I still haven't received a response, and it seems that you are no longer connected. This chat will now be closed. If you need further assistance, please start a new chat. Thank you!."
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Thanking and checking if customer needs any further help",
+    "description": "",
+    "cards": [
+      {
+        "content": "It was a pleasure to have assisted you today . Would there be anything else I can help you with?"
+      },
+      {
+        "content": "I'm glad I have been able to assist you today. Please let me know if you have any further questions or concerns."
+      },
+      {
+        "content": "Is there anything else I can help you with?."
+      },
+      {
+        "content": "Thank you for contacting us. Have a nice day!."
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "The customer is already unhappy with our service we need to use this script instead of using a standard closing script",
+    "description": "",
+    "cards": [
+      {
+        "content": "We apologize for the inconvenience, but we're unable to assist you at this moment. Your satisfaction is important to us, and we're continuously striving to improve our service. Please feel free to reach out in the future for any assistance. This chat will now close."
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "To use when the customer doesn't respond for 2 minutes. Send it and wait for another 3 minutes",
+    "description": "",
+    "cards": [
+      {
+        "content": "I didn't receive any response, and I want to make sure we're still connected. Let me know by responding to the chat. Otherwise, this chat will close in 3 minutes."
+      }
+    ]
+  },
+  {
+    "id": "Closing",
+    "category": "chat",
+    "title": "Close chat after no response for 5 minutes",
+    "description": "",
+    "cards": [
+      {
+        "content": " I still haven't received any response, and it seems that you are no longer connected. This chat will now be closed. If you need further assistance, please start a new chat. Thank you."
+      }
     ]
   }
 ]
