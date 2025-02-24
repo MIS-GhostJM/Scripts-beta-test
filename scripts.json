@@ -28,19 +28,6 @@
   {
     "id": "Opening",
     "category": "chat",
-    "title": "Chat Opening due to long wait time (more than 5 minutes) Request stated ETG/B.com UK",
-    "description": "The customer has gone through the workflow and is waiting to be connected to the agent",
-    "cards": [
-      {
-        "content": "Hi [Cx Name], this is [Agent Name]. Thank you for your patience as we handle a high volume of requests. I'll review your case details and be with you shortly!"
-      }
-    ],
-    "tags": [],
-    "created": "2025-02-24"
-  },
-  {
-    "id": "Opening",
-    "category": "chat",
     "title": "Chat Opening after connecting with the chat BOT (but no resolution) ETG UK",
     "description": "The customer has gone through our chatbot however his query was not resolved and is now connected to the agent",
     "cards": [
@@ -667,6 +654,326 @@
       },
       {
         "content": "Due to the high volume of customer inquiries, we must now close this chat. If you have any other questions or concerns, please don't hesitate to reach out to us again. Have a great day!"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "But how long do I have to wait?",
+    "description": "",
+    "cards": [
+      {
+        "content": "While I don't have an exact timeframe at the moment, please be assured that processing your refund is a top priority for us. As an intermediary of the airline, we are unable to confirm the refund timeframe, as we have to wait for the refund from the airline. Refunds typically undergo a thorough review process, which can vary based on several factors including payment method, bank processing times, and any specific policies related to your booking. Rest assured, we are actively working to expedite the process as much as possible. Our refund team will notify you via email once the refund is processed. You may also check the refund status on our website under the 'My Bookings' section. We appreciate your patience and truly value your business."
+      },
+      {
+        "content": "Refund timelines can vary, but we're here to ensure a smooth process! On average, it takes them 5 business days to process these, and once we receive those funds, our internal processing takes about 6 days. This means you can expect to see your refund within 10-15 business days. We're committed to transparency and will keep you informed every step of the way."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "When will I get my refund. It has been days/months I am waiting for my refund",
+    "description": "",
+    "cards": [
+      {
+        "content": "We totally get how frustrating it can be when things take longer than expected, and we're really sorry if this delay has caused any inconvenience to you. Rest assured, we're doing all we can to speed up this refund process. Normally, once we get the go-ahead from the airline, we aim to sort it out within about 6 days. But sometimes, delays beyond our control can be caused. Thanks for bearing with us while we get this sorted. We genuinely appreciate your patience and understanding during this time. Refund timelines can vary, but we're here to ensure a smooth process! On average, it takes them 5 business days to process these, and once we receive those funds, our internal processing takes about 6 days. This means you can expect to see your refund within 10-15 business days. We're committed to transparency and will keep you informed every step of the way."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "We should always update the customer on where they can check the status of their refund",
+    "description": "",
+    "cards": [
+      {
+        "content": "We assure you that we are doing everything we can to make sure that the refund is processed as soon as possible, We truly understand your concern, and we assure you that all the necessary actions have been taken from our end for your tickets. The reason why you have not received the refund for the ticket is because we cannot start processing a refund until we have received the funds from the airline. You will be notified via a separate email as soon as the rest of the amount has been refunded. We totally understand your point of view, however, we would like to assure you that we have already taken all the necessary actions regarding your request"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "We should always update the customer on where they can check the status of their refund",
+    "description": "",
+    "cards": [
+      {
+        "content": "We totally get how frustrating it can be when things take longer than expected, and we're really sorry if this delay has caused any inconvenience to you."
+      },
+      {
+        "content": "Rest assured, we're doing all we can to speed up this refund process. Normally, once we get the go-ahead from the airline, we aim to sort it out within about 6 days. But sometimes, delays beyond our control can be caused."
+      },
+      {
+        "content": "Thanks for bearing with us while we get this sorted. We genuinely appreciate your patience and understanding during this time."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "Can you call the airline to prioritize my refund?",
+    "description": "",
+    "cards": [
+      {
+        "content": "I truly apologize for the inconvenience, while we absolutely understand your concern, we have no influence over the airlines' prioritization from our end as they work with an extremely increased workload as well and have their own priorities to meet. As a result, the only option is for us to wait for the airline to finalize our request. Your patience is highly appreciated."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "The airline said I can have a full refund, why are you saying I can't get a full refund?",
+    "description": "",
+    "cards": [
+      {
+        "content": "Based on the force majeure guidelines we have received from the airline, we cannot proceed with your refund request. If you were informed by the representative of the airline company that you are entitled to a full refund, please ask them to insert a note in your booking with the authorization code."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Refund Delays",
+    "category": "chat",
+    "title": "If refund is still within the timeline",
+    "description": "",
+    "cards": [
+      {
+        "content": "Appreciate your patience, On average, processing the refund by airline takes about 5 business days, followed by an additional 6 days for our internal handling. Therefore, you can expect to receive your refund within 10 to 15 business days. We are currently facing a high volume of refund requests, and are doing our best to prioritize based on their submission date and other factors."
+      },
+      {
+        "content": "Although we are unable to give you a precise time frame, please be assured that we are doing our best to process your request as soon as possible. We'll send you an email as soon as your refund is finalized. Thank you for your understanding."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "When the ticket is within 'void' window (no add-ons)",
+    "description": "",
+    "cards": [
+      {
+        "content": "Thank you for waiting, [Cx Name]. I'm very happy to inform you we can cancel the reservation as it's still under same-day booking and you can have the refund less the handling fee from our end. The rest of the amount will be refunded back."
+      },
+      {
+        "content": "Thank you for waiting, [Cx Name]. I'm very happy to inform you we can cancel the reservation as it's still under same- day booking and you can have the refund less the handling fee from our end. <br>I have checked and you have some add-on products as well which can't be refunded after cancellation. <br>These products are: <br>[Non-refundable Add on Products] <br>The rest of the amount will be refunded back. <br>Would you like to proceed with the cancellation?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "The customer wants to cancel",
+    "description": "full refund applicable",
+    "cards": [
+      {
+        "content": "Hi [Cx Name], According to the airline terms and conditions for cancellation, cancellation fees will apply which are listed below: <br>Total to pay for Cancellation: [Total Cancelation Fee Amount] <br>-Breakdown of charge-<br>Airline Cancellation fee: [Airline Cancelation fee] <br>Handling fee: [Cancelation Handling fee] <br>Would you like us to proceed with canceling your booking and submitting a refund request to the airline?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "Cancel (Non-refundable)",
+    "description": "",
+    "cards": [
+      {
+        "content": "According to the airline rules, the ticket, including any add-on products such as (baggage/seats/meals) fees, is non-refundable. Would you still like me to cancel your booking?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Opening",
+    "category": "chat",
+    "title": "Chat Opening due to long wait time (more than 5 minutes) Request stated ETG/B.com UK",
+    "description": "The customer has gone through the workflow and is waiting to be connected to the agent",
+    "cards": [
+      {
+        "content": "Great news – your payment has been received! We’re now processing the changes, and our ticketing team will send your updated ticket to your email shortly. You can expect to receive it as soon as possible. If there’s anything you need in the meantime, feel free to reach out."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "When the cancellation is done (Refundable)",
+    "description": "",
+    "cards": [
+      {
+        "content": "Your booking is cancelled, and you will be getting a confirmation email after this conversation. On average, processing the refund by airline takes about 5 business days, followed by an additional 6 days for our internal handling. Therefore, you can expect to receive your refund within 10 to 15 business days. We are currently facing a high volume of refund requests, and are doing our best to prioritize based on their submission date and other factors. Although we are unable to give you a precise time frame, please be assured that we are doing our best to process your request as soon as possible. We'll send you an email as soon as your refund is finalized. Thank you for your understanding."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "Customer wants to cancel",
+    "description": "No refund applicable but with voucher",
+    "cards": [
+      {
+        "content": "[Cx Name], the airline's rules indicate that they are ONLY allowing a future travel credit/voucher instead of a refund. Should I secure this for you as you can use this up to [-voucher validity-] months, Shall we go ahead and cancel the booking?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "If customer is adamant on a refund only (Non-refundable)",
+    "description": "",
+    "cards": [
+      {
+        "content": "According to the current policy, the refund will only be as per the fare rules which state that your tickets are not refundable. Shall we go ahead and cancel the booking?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "When the cancellation is done (Non-refundable)",
+    "description": "",
+    "cards": [
+      {
+        "content": "I have now cancelled your original ticket and I have sent all details regarding Future Travel ticket/open voucher on your registered email address."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "Customer wants to cancel (ticket is partially used)",
+    "description": "",
+    "cards": [
+      {
+        "content": "[Cx Name], I can see that the airline might be offering a refund. Please note that an airline fee per person applies for cancellation, while your refund eligibility depends on the amount corresponding to the part of the ticket used. Also, some taxes and extra services may be non-refundable per the airline's rules and our terms and conditions. Do you want to cancel for all passengers? "
+      },
+      {
+        "content": "Please note: <br>On average, processing the refund by the airline takes about 5 business days, followed by an additional 6 days for our internal handling. Therefore, you can expect to receive your refund within 10 to 15 business days. <br>Cancellation fees will apply which are listed below: <br>Total amount to pay for cancellation: [Total Cancelation Fee Amount] <br>-Breakdown- <br>Airline cancellation fee: [Airline Cancelation fee] <br>Handling fee: [Cancelation Handling fee] <br>Shall I proceed with the cancellation?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "When the cancellation is done (Partially used)",
+    "description": "",
+    "cards": [
+      {
+        "content": "It's all done, [Cx Name]. I have sent the cancellation confirmation to your registered email address."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "Customer wants to cancel",
+    "description": "No refund applicable and our service fee higher than refundable taxes",
+    "cards": [
+      {
+        "content": "Certainly, [Cx Name]. I will go ahead and check the airline policy for you. Allow me 5 minutes while I check this."
+      },
+      {
+        "content": "[Cx Name], the airline's rules indicate that your ticket is non-refundable and the amount of refundable tax is lower than our service fee of per person. This said, you will not receive a refund nor will you be charged any additional fees. Would you like me to proceed with the cancellation to notify the airline?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "Cancellation with cancelation protection (medical)",
+    "description": "",
+    "cards": [
+      {
+        "content": "I can see that you purchased a cancellation protection. Please note the following requirements to submit a claim:  <br>1. A medical certificate must be submitted and completed by a doctor affiliated with the Social Insurance Office. The certificate must bear the name, contact telephone number and stamp of the doctor. <br>2. A copy of the doctor's identification must be enclosed if no stamp is available. <br>3. The doctor's certificate must state the examination date, examination results, diagnosis and the fact that you are unable to travel. <br>4. The doctor must use the Gotogate doctor's certificate (I will send the link via email): this is the only doctor's certificate we accept. The doctor's certificate must be printed by an independent party for the doctor's certificate to be valid.  <br><br>Please let me know if you have any questions. The next step we will undertake is to cancel your flights. Would you like to proceed?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "Pax doesn't want to Cancel",
+    "description": "",
+    "cards": [
+      {
+        "content": "No problem. Please note that I have not made any changes to your booking. If you decide to cancel, please contact us again no later than [Cancelation deadline]. After this date, changes may not be allowed or additional airline fees may apply."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Cancel",
+    "category": "chat",
+    "title": "The customer wants to cancel (full refund applicable and ATC/Edvin Calculator is working)",
+    "description": "",
+    "cards": [
+      {
+        "content": "Hi [Cx Name], According to the airline terms and conditions for cancellation, cancellation fees will apply which are listed below: <br>Total to pay for cancellation: [Total Cancelation Fee Amount] <br>-Breakdown- <br>Airline cancellation fee: [Airline Cancelation fee] <br>Handling fee: [Cancelation Handling fee] <br>Total Refund Amount: [Total Refund Amount]  <br><br>Would you like us to proceed with canceling your booking and submitting a refund request to the airline?"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Schedule Change",
+    "category": "chat",
+    "title": "Transferring chat to 2L/h3>",
+    "description": "",
+    "cards": [
+      {
+        "content": "Your request needs to be handled by a different team, specialised in schedule changes. Please stay connected in chat while I connect you to an agent from this team."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Schedule Change",
+    "category": "chat",
+    "title": "Flight reconfirmation",
+    "description": "Customers checking any changes or cancellations due to adverse weather, escalating tensions, etc.; however, flight remains active and confirmed on our system and no updates of any changes from the airline.",
+    "cards": [
+      {
+        "content": "Based on our records, your flight is confirmed, and we have not received any updates from the airline. If you have any further concerns about this flight, we kindly ask you to contact the airline directly. Thank you for your understanding.<br><br>For your easy reference, please provide the following details when contacting the airline<br>Ticket number: <br>Passenger's last name: <br><br>Airline website link: [Link]"
       }
     ],
     "tags": [],
