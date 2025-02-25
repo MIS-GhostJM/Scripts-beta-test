@@ -2,6 +2,7 @@
 const DOM = {
     channelSelect: document.getElementById('channel-selection'),
     scriptNavContainer: document.querySelector('.script-nav-container'),
+    scriptCanvas: document.querySelector('.script-canvas'),
     navButtons: document.querySelectorAll('.nav-btn'),
     scriptModules: document.querySelectorAll('.script-module'),
     navItems: document.querySelectorAll('.nav-item'),
@@ -11,7 +12,10 @@ const DOM = {
     scriptTitles: {
         chat: document.querySelectorAll('.script-title-chat'),
         voice: document.querySelectorAll('.script-title-voice')
-    }
+    },
+    resetButton: document.querySelector('.global-script-reset'),
+    agentInput: document.getElementById('user'),
+    customerInput: document.getElementById('customer')
 };
 
 // State management
@@ -20,12 +24,60 @@ const state = {
     activeNavButton: null
 };
 
+// Reset functionality for script canvas
+const ResetManager = {
+    init() {
+        // Add event listener to reset button
+        if (DOM.resetButton) {
+            DOM.resetButton.addEventListener('click', () => this.resetAllManualEdits());
+        }
+    },
+
+    // Reset all manual-edit elements to their default values
+    resetAllManualEdits() {
+        const manualEditElements = document.querySelectorAll('.manual-edit');
+        const agentName = DOM.agentInput?.value || '';
+        
+        manualEditElements.forEach(element => {
+            const defaultText = element.getAttribute('data-default-text');
+            
+            // Only reset if it has the manual-edit class
+            if (defaultText) {
+                // Special handling for Agent Name
+                if (defaultText === '[Agent Name]' && agentName) {
+                    element.textContent = agentName;
+                } else {
+                    element.textContent = defaultText;
+                }
+                
+                // Remove any editing classes that might be present
+                element.classList.remove('editing');
+                
+                // Trigger change event for synchronization with other components
+                const event = new Event('input', { bubbles: true });
+                element.dispatchEvent(event);
+            }
+        });
+        
+        // Also trigger sync-inputs.js to update its state if StateManager exists
+        if (window.stateManager) {
+            document.querySelectorAll('.manual-edit').forEach(field => {
+                const defaultText = field.getAttribute('data-default-text');
+                const content = field.textContent;
+                window.stateManager.updateGroup(defaultText, content, null);
+            });
+        }
+        
+        console.log('All manual-edit elements have been reset to default values');
+    }
+};
+
 const SearchManager = {
     isSearchActive: false, // Track if search is currently active
 
     // Reset all modules to inactive state
     resetModules() {
-        document.querySelectorAll('.script-module').forEach(module => {
+        DOM.scriptCanvas.querySelectorAll('.script-module').forEach(module => {
             module.classList.remove('active');
             module.querySelectorAll('.script-title-chat, .script-title-voice').forEach(title => {
                 title.classList.remove('active');
@@ -64,10 +116,35 @@ const SearchManager = {
         }
     },
 
-    // Extract only the heading text from title element
-    getTitleText(titleElement) {
+    // Extract text content from title element (including h4 and p)
+    getTitleContent(titleElement) {
         const heading = titleElement.querySelector('h4');
-        return heading ? heading.textContent.trim() : '';
+        const paragraph = titleElement.querySelector('p');
+        
+        const headingText = heading ? heading.textContent.trim() : '';
+        const paragraphText = paragraph ? paragraph.textContent.trim() : '';
+        
+        return {
+            heading: headingText,
+            paragraph: paragraphText,
+            combined: `${headingText} ${paragraphText}`.trim()
+        };
+    },
+
+    // Check if search terms match content (handles mixed up words)
+    isMatch(content, searchTerms) {
+        if (!content || !searchTerms.length) return false;
+        
+        // Convert content to lowercase and split into words
+        const contentWords = content.toLowerCase().split(/\s+/);
+        
+        // Count how many search terms are found in the content
+        const matchedTerms = searchTerms.filter(term => {
+            return contentWords.some(word => word.includes(term));
+        });
+        
+        // Return true if all search terms are found
+        return matchedTerms.length === searchTerms.length;
     },
 
     // Search implementation
@@ -80,22 +157,21 @@ const SearchManager = {
 
         this.isSearchActive = true;
         this.resetModules();
-        const searchLower = searchTerm.toLowerCase();
+        
+        // Split search into individual terms and filter out empty strings
+        const searchTerms = searchTerm.toLowerCase().split(/\s+/).filter(term => term.length > 0);
         let hasResults = false;
 
-        // Search in chat titles
-        DOM.scriptTitles.chat.forEach(title => {
-            const titleText = this.getTitleText(title).toLowerCase();
-            if (titleText.includes(searchLower)) {
-                this.activateModule(title);
-                hasResults = true;
-            }
-        });
-
-        // Search in voice titles
-        DOM.scriptTitles.voice.forEach(title => {
-            const titleText = this.getTitleText(title).toLowerCase();
-            if (titleText.includes(searchLower)) {
+        // Search within script-canvas only
+        DOM.scriptCanvas.querySelectorAll('.script-title-chat, .script-title-voice').forEach(title => {
+            const content = this.getTitleContent(title);
+            
+            // Check if any of our search terms match the title or paragraph
+            if (
+                this.isMatch(content.heading, searchTerms) || 
+                this.isMatch(content.paragraph, searchTerms) || 
+                this.isMatch(content.combined, searchTerms)
+            ) {
                 this.activateModule(title);
                 hasResults = true;
             }
@@ -324,6 +400,14 @@ const TooltipManager = {
             
             tooltip.style.top = `${topPosition}px`;
         }
+    },
+    
+    handleTooltip(item, tooltip, isEnter) {
+        if (isEnter) {
+            this.showTooltip(item, tooltip);
+        } else {
+            this.hideTooltip(tooltip);
+        }
     }
 };
 
@@ -362,4 +446,5 @@ document.addEventListener('DOMContentLoaded', () => {
     ScriptManager.updateModule();
     TooltipManager.init();
     SearchManager.init();
+    ResetManager.init(); // Initialize the reset functionality
 });
