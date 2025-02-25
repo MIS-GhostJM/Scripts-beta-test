@@ -313,6 +313,18 @@ body {
     cursor: pointer;
     transition: var(--transition);
 }
+#C-Sat\ Scripts-nav{
+    background: linear-gradient(135deg, #32e21a, #02a14a);
+}
+
+#Exchange\ and\ Cancellation\ Tips-nav{
+    background: linear-gradient(135deg, #214bd3da, #776206);
+}
+
+#General\ Scripts-nav{
+    background: linear-gradient(135deg, #abe410da, #776206);
+}
+
 
 .script-nav-container button.active {
     background: #BC6C25;
