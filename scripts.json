@@ -1284,5 +1284,258 @@
     ],
     "tags": [],
     "created": "2025-02-24"
+  },
+  {
+    "id": "Exchange and Cancellation Tips",
+    "category": "chat",
+    "title": "Fare difference is high",
+    "description": "",
+    "cards": [
+      {
+        "content": "The prices are dynamic in nature and depend on the seat and fare availability – as of now, the fare is higher for the date and time you are choosing, than the ticket you originally paid for"
+      },
+      {
+        "content": "I have checked the availability for multiple dates and this is the cheapest date and fare in this specific date range that I can find for you"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Exchange and Cancellation Tips",
+    "category": "chat",
+    "title": "Fare cheaper on other sites",
+    "description": "",
+    "cards": [
+      {
+        "content": "I understand your concern, but the fares may differ on airlines website or other booking sites, but we are following the changes based on the restrictions and terms and conditions of the fare class that you have booked"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Exchange and Cancellation Tips",
+    "category": "chat",
+    "title": "Fare cheaper on our site",
+    "description": "",
+    "cards": [
+      {
+        "content": "I understand your concern, but the prices and availability that you are seeing currently on our website is applicable for new bookings since they may be basic or most restricted fares, but we have to follow the restrictions of original ticket that you have booked and the inventory is different for rebooking"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Exchange and Cancellation Tips",
+    "category": "chat",
+    "title": "Downgrade not permitted",
+    "description": "",
+    "cards": [
+      {
+        "content": "We are required to follow the same class of service for rebooking, based on airlines ticket rules, and we are not allowed to downgrade your ticket"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Exchange and Cancellation Tips",
+    "category": "chat",
+    "title": "Flexible ticket policy",
+    "description": "",
+    "cards": [
+      {
+        "content": "As per Flexible ticket policy, only airlines change fee and handling fee are waived, but you still have to pay the difference in fare"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "Exchange and Cancellation Tips",
+    "category": "chat",
+    "title": "Step Guide for Customer to check the Fare rules / Terms and Condition",
+    "description": "",
+    "cards": [
+      {
+        "content": "Step 1 - Kindly check the confirmation email that was sent to you after booking.<br>Step 2 - Please scroll to the bottom portion of the confirmation email where you can find the \"Travel Conditions/Fare Rules\" link.<br>Step 3 - If you click on the Ticket Rules link, a new window will open.<br>Step 4 - Then, you have to sign in your Email Address and Order Number [Insert Order#].<br>Step 5 - Once done, a verification email will be sent to your email which you need to confirm.<br>Step 6 - Then, you can review the Ticket Rules associated to your booking."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "FOLLOW HOLD PROCEDURE",
+    "description": "5 min ( DON’T EXCEED )",
+    "cards": [
+      {
+        "content": "Thank you for waiting [Cx Name]. I am now checking the [reason for hold] and would be needing more time. It won't take more than 5 minutes"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "WHEN PLACING CUSTOMER ON HOLD",
+    "description": "Explain the reason why you are putting the customer on hold / or the activities being conducted",
+    "cards": [
+      {
+        "content": "I am currently checking the [reason for hold/what you are doing]. Please allow me more time."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "APOLOGIZE FOR LONG OR MULTIPLE HOLDS OR IF CHAT IS TAKING TOO LONG",
+    "description": "Apologize and explain why the transaction is taking so much time. Always respect customers time",
+    "cards": [
+      {
+        "content": "I apologize for taking so much of your time and I appreciate your patience with me today. I am making sure that I am processing this correctly thus I will need a 5 minutes to work on this."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "TRANSFER CUSTOMER TO SCHEDULE CHANGE TEAM / BOOKING.COM",
+    "description": "Educate customer why you cant help , where are you transferring and apologize for inconvenience",
+    "cards": [
+      {
+        "content": "I understand your concern, and I’d really love to help you with the [eg: schedule change in your flight from JFK to LON on 23MAR for (Passenger Name)], however since there is a dedicated team that work on these scenarios, I need to transfer your chat to our Process Expert team i.e. [Mention Team name] team who can assist you better."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "Send to Support Cases",
+    "description": "Briefly explain that you want to help but due to some reason (provide the reason), (you need to send the request to our concern team) ( LCC, TRAVELFUSION, ETC WHERE YOU CANT HELP)",
+    "cards": [
+      {
+        "content": "I understand your concern, and I’d really love to help you with the [ex: name correction for (Passenger Name) in your flight from JFK to LON on 23MAR] in your flight, however since there is a dedicated team that work on these scenarios, I need to send this request to our Support Expert Team who will get in touch with you to assist you better."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "TIMELINE CONCERN OF CUSTOMER",
+    "description": "",
+    "cards": [
+      {
+        "content": "Unfortunately, we do not have a specific timeline, since the team will work on your case and once they complete your request, they will update you via call or email as soon as possible.<br><br>Please verify that following are your correct email address and your best contact number.<br>Contact Number - [customer contact number] <br>Email Address - [customer email]"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "REFERRING THE CUSTOMER TO AIRLINE",
+    "description": "Briefly explain that you want to help but due to some reason(specify the reason example ticket is in airlines control or instruction in Document Tab states that the customer need to contact the airline)",
+    "cards": [
+      {
+        "content": "I understand your concern, and I would love to assist you with your [ex: modifications in your flight from JFK to LON on 23MAR for (Passenger Name)] in your flight, however since we have limited access to your reservation, and [ex: airline has control over the ticket] thus we’re unable to proceed. You will have to reach out to the airline for this request."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "Refund Delay apology",
+    "description": "Where is the refund and apologize its taking longer than expectation",
+    "cards": [
+      {
+        "content": "I am sorry for taking some time to check your refund status and as I see that refund is still pending [DEPARTMENT / AIRLINES / TEAM / BACKEND]. Please accept my sincere apologies for the delay and I assure you that our team is working closely with [FREE FLOW TO USE DEPARTMENT / AIRLINES / TEAM / BACKEND] to expedite the process."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "Customer not OK with SERVICE FEES CHARGES",
+    "description": "Need to explain what charges are and Apologize for inconvenience",
+    "cards": [
+      {
+        "content": "I understand your concern, however our service fee covers your case handling, including all necessary communication and administrative work with the airline. As your travel agency, we’re committed to managing all paperwork and follow-up to ensure that the process is handled smoothly. Please feel free to reach out if you have any additional questions regarding this matter."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "Closing After Long Chat",
+    "description": "",
+    "cards": [
+      {
+        "content": "It was my pleasure assisting you today and I sincerely apologize that it took some time to complete [Customer Request - Rebooking freeflow]. I truly appreciate your patience with me."
+      },
+      {
+        "content": "I truly apologize for the delay in completing the [Customer Request - Rebooking freeflow]. It was a pleasure helping you today and I sincerely thank you for bearing with me. "
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "all",
+    "title": "IDLE CHAT / DISCONNECT EMAIL SCRIPT FORMAT FOR DSAT",
+    "description": "Mention the resoulution to customer concern on disconnect email even if not discussed",
+    "cards": [
+      {
+        "content": "Hi [Cx Name],<br><br>We are contacting you because you reached out via chat and we were not able to come to a conclusion. I aplogize for the incovenience you had to go through, but please find your answer below:<br><br>[Free flow text]<br><br>Please note this email address cannot receive replies. Kindly call or chat with us if you have any further questions.<br><br>Thank you.<br>[Agent name]<br>[Brand Name] Support"
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "Language translator chat / Start of conversation",
+    "description": "",
+    "cards": [
+      {
+        "content": "Please be advised that we may use a translation tool to provide support in your local language, and you may see grammatical errors in our replies. I apologize for any confusion and thank you for understanding."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
+  },
+  {
+    "id": "C-Sat Scripts",
+    "category": "chat",
+    "title": "Language translator chat / Middle of the conversation",
+    "description": "",
+    "cards": [
+      {
+        "content": "I apologize for any grammatical errors during this chat that may have happened due to language translation tool. Thank you for your patience and understanding."
+      }
+    ],
+    "tags": [],
+    "created": "2025-02-24"
   }
 ]
