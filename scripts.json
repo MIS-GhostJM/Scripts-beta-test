@@ -1889,7 +1889,7 @@
   },
   {
     "id": "C-Sat Scripts",
-    "category": "all",
+    "category": "chat",
     "title": "IDLE CHAT / DISCONNECT EMAIL SCRIPT FORMAT FOR DSAT",
     "description": "Mention the resoulution to customer concern on disconnect email even if not discussed",
     "cards": [
